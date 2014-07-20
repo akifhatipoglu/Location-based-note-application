@@ -20,15 +20,18 @@ public class Main_Activity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent=new Intent(Main_Activity.this,Messagerecord.class);				
+				intent.putExtra("color","red");
+				intent.putExtra("choose","shop");
 				startActivity(intent);
-				Main_Activity.this.finish();
 			}
 		});
         ImageButton btn_shop1=(ImageButton) findViewById(R.id.imageButton2);
         btn_shop1.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent=new Intent(Main_Activity.this,Messagerecord.class);				
+				Intent intent=new Intent(Main_Activity.this,Messagerecord.class);		
+				intent.putExtra("color","blue");
+				intent.putExtra("choose","shop1");
 				startActivity(intent);
 			}
 		});
@@ -36,7 +39,9 @@ public class Main_Activity extends Activity {
         btn_atm.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent=new Intent(Main_Activity.this,Messagerecord.class);				
+				Intent intent=new Intent(Main_Activity.this,Messagerecord.class);
+				intent.putExtra("color","yellow");
+				intent.putExtra("choose","atm");
 				startActivity(intent);
 			}
 		});
@@ -44,7 +49,9 @@ public class Main_Activity extends Activity {
         btn_book.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent=new Intent(Main_Activity.this,Messagerecord.class);				
+				Intent intent=new Intent(Main_Activity.this,Messagerecord.class);
+				intent.putExtra("color","purple");
+				intent.putExtra("choose","book");
 				startActivity(intent);
 			}
 		});
@@ -52,7 +59,9 @@ public class Main_Activity extends Activity {
         btn_event.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent=new Intent(Main_Activity.this,Messagerecord.class);				
+				Intent intent=new Intent(Main_Activity.this,Messagerecord.class);	
+				intent.putExtra("color","orange");
+				intent.putExtra("choose","event");
 				startActivity(intent);
 			}
 		});
@@ -60,7 +69,9 @@ public class Main_Activity extends Activity {
         btn_pharmacy.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent=new Intent(Main_Activity.this,Messagerecord.class);				
+				Intent intent=new Intent(Main_Activity.this,Messagerecord.class);
+				intent.putExtra("color","green");
+				intent.putExtra("choose","pharmacy");
 				startActivity(intent);
 			}
 		});
