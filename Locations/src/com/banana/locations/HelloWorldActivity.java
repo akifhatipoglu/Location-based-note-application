@@ -1,5 +1,7 @@
 package com.banana.locations;
 
+import com.mkyong.android.R;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -13,6 +15,6 @@ public class HelloWorldActivity extends Activity {
         TextView text = new TextView(this);
         text.setText("Hello World, Android - mkyong.com");
         setContentView(text);
-        //setContentView(R.layout.main);
+        setContentView(R.layout.main);
     }
 }
