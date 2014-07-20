@@ -1,24 +1,37 @@
 package com.banana.locations;
 
+import java.util.List;
+
+import com.banana.messagedatabase.RecordOperations;
+import com.banana.messagedatabase.RecordText;
 import com.mkyong.android.R;
 
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class Messagerecord  extends Activity{
-
+	private RecordOperations op;
+	private RecordText p;
+	private  String choose;
+	private EditText text;
 	 @Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.messagerecord);
+	        op = new RecordOperations(this);
 	        String colorname = getIntent().getExtras().get("color").toString();
+	        choose= getIntent().getExtras().get("choose").toString();
 	        System.out.println(getIntent().getExtras().get("color").toString());
 	        System.out.println(getIntent().getExtras().get("choose").toString());
 	        Button buton_record = (Button) findViewById(R.id.button_record);
 	        LinearLayout layout = (LinearLayout) findViewById(R.id.notebackground);
+	         text = (EditText) findViewById(R.id.editText1);
 	        //layout.setBackgroundColor(color)
 	        if(colorname.equals("red")){
 	        	layout.setBackgroundColor(Color.RED);
@@ -41,5 +54,22 @@ public class Messagerecord  extends Activity{
 	        }
 	        
 	        
-	    }
+	        buton_record.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					p= new RecordText(choose,text.getText().toString());	
+					op.open();
+					   	   op.addPuan(p.getReminderTicket(), p.getReminderTextRecord());
+					   	   Toast.makeText(Messagerecord.this, "record.", Toast.LENGTH_SHORT).show();
+					   	 List<RecordText> a= op.getAllPuan();
+					        for (RecordText recordText : a) {
+					        	 Toast.makeText(Messagerecord.this, recordText.getReminderTicket()+ " " +" "+recordText.getReminderTextRecord(), Toast.LENGTH_SHORT).show();
+					        	System.out.println(recordText.getReminderTicket()+ " " +" "+recordText.getReminderTextRecord());
+							}
+				}
+			});
+	        
+	       
+	        }
 }
