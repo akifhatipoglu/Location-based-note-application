@@ -18,29 +18,32 @@ public LocationManager locationManager;
 public MyLocationListener listener;
 public Location previousBestLocation = null;
 
+
 Intent intent;
 int counter = 0;
 
 @Override
 public void onCreate() {
     super.onCreate();
+    System.out.println("Create........");
     intent = new Intent(BROADCAST_ACTION);      
 }
 
 @Override
-public void onStart(Intent intent, int startId) {      
+public void onStart(Intent intent, int startId) {     
+	System.out.println("Start........");
     locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
     listener = new MyLocationListener();        
     locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 4000, 0, listener);
     locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 4000, 0, listener);
 }
 
-@Override
-public IBinder onBind(Intent intent) {
-    return null;
-}
+	@Override
+	public IBinder onBind(Intent intent) {
+		return null;
+	}
 
-protected boolean isBetterLocation(Location location, Location currentBestLocation) {
+	protected boolean isBetterLocation(Location location, Location currentBestLocation) {
     if (currentBestLocation == null) {
         // A new location is always better than no location
         return true;
@@ -83,20 +86,22 @@ protected boolean isBetterLocation(Location location, Location currentBestLocati
 }
 
 /** Checks whether two providers are the same */
-private boolean isSameProvider(String provider1, String provider2) {
-    if (provider1 == null) {
-      return provider2 == null;
-    }
+	private boolean isSameProvider(String provider1, String provider2) {
+		if (provider1 == null) {
+			return provider2 == null;
+		}
     return provider1.equals(provider2);
-}
+	}
 
-@Override
-public void onDestroy() {       
-   // handler.removeCallbacks(sendUpdatesToUI);     
-    super.onDestroy();
-    Log.v("STOP_SERVICE", "DONE");
-    locationManager.removeUpdates(listener);        
-}   
+	@Override
+	public void onDestroy() {       
+		// handler.removeCallbacks(sendUpdatesToUI);  
+		System.out.println("Destroy........");
+		Log.i("aaaaaa", "stop");
+		super.onDestroy();
+		Log.v("STOP_SERVICE", "DONE");
+		locationManager.removeUpdates(listener);        
+	}   
 
 public static Thread performOnBackgroundThread(final Runnable runnable) {
     final Thread t = new Thread() {
@@ -119,11 +124,12 @@ public class MyLocationListener implements LocationListener
 
     public void onLocationChanged(final Location loc)
     {
-        Log.i("**************************************", "Location changed");
+        System.out.println("Location changed........");
         if(isBetterLocation(loc, previousBestLocation)) {
             loc.getLatitude();
             loc.getLongitude();
-            System.out.println( loc.getLatitude()+"--"+ loc.getLongitude());
+            Toast.makeText(LocationService.this, loc.getLatitude()+"----"+loc.getLongitude(), Toast.LENGTH_SHORT).show();
+            System.out.println(loc.getLatitude()+"----"+loc.getLongitude());
             intent.putExtra("Latitude", loc.getLatitude());
             intent.putExtra("Longitude", loc.getLongitude());     
             intent.putExtra("Provider", loc.getProvider());                 
@@ -134,13 +140,13 @@ public class MyLocationListener implements LocationListener
 
     public void onProviderDisabled(String provider)
     {
-        Toast.makeText( getApplicationContext(), "Gps Disabled", Toast.LENGTH_SHORT ).show();
+        Toast.makeText( getApplicationContext(), "* Gps Disabled *", Toast.LENGTH_SHORT ).show();
     }
 
 
     public void onProviderEnabled(String provider)
     {
-        Toast.makeText( getApplicationContext(), "Gps Enabled", Toast.LENGTH_SHORT).show();
+        Toast.makeText( getApplicationContext(), "* Gps Enabled *", Toast.LENGTH_SHORT).show();
     }
 
 
