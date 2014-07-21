@@ -12,7 +12,7 @@ public class RecordText  implements Serializable {
 	public RecordText() {
 	}
 
-	public RecordText( String reminderTextRecord, String reminderTicket) {
+	public RecordText( String reminderTicket, String reminderTextRecord) {
 		super();
 		ReminderTextRecord = reminderTextRecord;
 		ReminderTicket = reminderTicket;

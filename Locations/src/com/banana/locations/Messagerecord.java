@@ -4,10 +4,13 @@ import java.util.List;
 
 import com.banana.messagedatabase.RecordOperations;
 import com.banana.messagedatabase.RecordText;
+import com.banana.service.LocationService;
 import com.mkyong.android.R;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
+import android.location.LocationListener;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -62,11 +65,14 @@ public class Messagerecord  extends Activity{
 					op.open();
 					   	   op.addPuan(p.getReminderTicket(), p.getReminderTextRecord());
 					   	   Toast.makeText(Messagerecord.this, "record.", Toast.LENGTH_SHORT).show();
-					   	 List<RecordText> a= op.getAllPuan();
+					   	   List<RecordText> a= op.getAllPuan();
 					        for (RecordText recordText : a) {
 					        	 Toast.makeText(Messagerecord.this, recordText.getReminderTicket()+ " " +" "+recordText.getReminderTextRecord(), Toast.LENGTH_SHORT).show();
 					        	System.out.println(recordText.getReminderTicket()+ " " +" "+recordText.getReminderTextRecord());
 							}
+					        Intent intent = new Intent(Messagerecord.this, LocationService.class); 
+					        startService(intent);
+					        System.out.println("service started.");
 				}
 			});
 	        
