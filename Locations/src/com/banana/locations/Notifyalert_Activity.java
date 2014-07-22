@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.TextureView;
 import android.widget.TextView;
@@ -50,6 +51,8 @@ public class Notifyalert_Activity extends Activity {
 								        	 Toast.makeText(Notifyalert_Activity.this, recordText.getReminderTicket()+ " " +" "+recordText.getReminderTextRecord(), Toast.LENGTH_SHORT).show();
 								        	System.out.println(recordText.getReminderTicket()+ " " +" "+recordText.getReminderTextRecord());
 										}
+								        Intent intent=new Intent(Notifyalert_Activity.this,Main_Activity.class);				
+										startActivity(intent);   
 								}
 							})
 					.setNegativeButton("Hayır",
