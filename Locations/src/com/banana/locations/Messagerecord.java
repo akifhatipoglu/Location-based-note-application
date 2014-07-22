@@ -65,7 +65,7 @@ public class Messagerecord  extends Activity{
 					   	   Toast.makeText(Messagerecord.this, "record.", Toast.LENGTH_SHORT).show();
 					   	   List<RecordText> a= op.getAllPuan();
 					        for (RecordText recordText : a) {
-					        	 Toast.makeText(Messagerecord.this, recordText.getReminderTicket()+ " " +" "+recordText.getReminderTextRecord(), Toast.LENGTH_SHORT).show();
+					        	 Toast.makeText(Messagerecord.this, recordText.getReminderTicket()+ " " +" "+recordText.getReminderTextRecord()+"-"+recordText.getId(), Toast.LENGTH_SHORT).show();
 					        	System.out.println(recordText.getReminderTicket()+ " " +" "+recordText.getReminderTextRecord());
 							}
 					       // Intent intent = new Intent(Messagerecord.this, LocationService.class); 

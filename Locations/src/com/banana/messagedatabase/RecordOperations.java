@@ -41,6 +41,21 @@ public class RecordOperations {
 		 long id = p.getId();
 		 database.delete(Database.TABLE_NAME, Database.TABLE_ID + " = " + id, null);
 	 }
+	 public void deleteNotify(String deleterecord) {
+		 List<RecordText> puanlist = new ArrayList<RecordText>();
+		 Cursor cursor = database.query(Database.TABLE_NAME, DataBase_table_names, null, null, null, null, null);
+		 cursor.moveToFirst();
+		 double id=0;
+		 while (!cursor.isAfterLast()) {
+			 RecordText puan = parsePuan(cursor);
+			 puanlist.add(puan);
+			 if(puan.getReminderTextRecord().equals(deleterecord)){System.out.println(deleterecord); id=puan.getId();}
+			 cursor.moveToNext();
+		 }
+		 cursor.close();
+		 System.out.println(deleterecord);
+		 database.delete(Database.TABLE_NAME,Database.TABLE_ID + " = " + id, null);
+	 }
   
 	 public List<RecordText> getAllPuan() {
 		 List<RecordText> puanlist = new ArrayList<RecordText>();

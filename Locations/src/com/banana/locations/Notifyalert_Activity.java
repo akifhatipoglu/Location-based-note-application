@@ -1,5 +1,9 @@
 package com.banana.locations;
 
+import java.util.List;
+
+import com.banana.messagedatabase.RecordOperations;
+import com.banana.messagedatabase.RecordText;
 import com.mkyong.android.R;
 
 import android.app.Activity;
@@ -9,17 +13,23 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.TextureView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Notifyalert_Activity extends Activity {
 	final Context context = this;
+	public RecordOperations op;
+	public String delete_record;
+	
 	 @Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.notifyalert);
-	        String delete_record = getIntent().getExtras().get("delete").toString();
+	        op = new RecordOperations(this);
+	         delete_record = getIntent().getExtras().get("delete").toString();
 	        System.out.println(delete_record);
 	        TextView view = (TextView) findViewById(R.id.textView_deleterecord);
 	        view.setText("Kayıtlı Hatırlatma : "+delete_record);
+	        op.open();
 	        
 	        
 	    	AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
@@ -33,8 +43,13 @@ public class Notifyalert_Activity extends Activity {
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
 										int id) {
-									//MainActivity.this.finish();
-									
+									op.deleteNotify(delete_record);
+								   	   Toast.makeText(Notifyalert_Activity.this, "record.", Toast.LENGTH_SHORT).show();
+								   	   List<RecordText> a= op.getAllPuan();
+								        for (RecordText recordText : a) {
+								        	 Toast.makeText(Notifyalert_Activity.this, recordText.getReminderTicket()+ " " +" "+recordText.getReminderTextRecord(), Toast.LENGTH_SHORT).show();
+								        	System.out.println(recordText.getReminderTicket()+ " " +" "+recordText.getReminderTextRecord());
+										}
 								}
 							})
 					.setNegativeButton("Hayır",
