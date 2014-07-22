@@ -2,8 +2,6 @@ package com.banana.service;
 
 import java.util.List;
 
-import com.banana.locations.Main_Activity;
-import com.banana.locations.Messagerecord;
 import com.banana.locations.Notifyalert_Activity;
 import com.banana.messagedatabase.RecordOperations;
 import com.banana.messagedatabase.RecordText;
@@ -18,7 +16,6 @@ import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
