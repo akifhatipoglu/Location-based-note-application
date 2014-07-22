@@ -14,7 +14,6 @@ public class RecordOperations {
 	private Database dbHelper;
 	 private String[] DataBase_table_names = { Database.TABLE_ID,Database.ReminderTicket, Database.ReminderTextRecord };
 	 private SQLiteDatabase database;
-	 
 	 public RecordOperations(Context context) {	 
 		         dbHelper = new Database(context);
 		     }

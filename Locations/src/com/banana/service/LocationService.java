@@ -1,5 +1,10 @@
 package com.banana.service;
 
+import java.util.List;
+
+import com.banana.locations.Messagerecord;
+import com.banana.messagedatabase.RecordOperations;
+import com.banana.messagedatabase.RecordText;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -17,25 +22,28 @@ private static final int TWO_MINUTES = 1000 * 60 * 2;
 public LocationManager locationManager;
 public MyLocationListener listener;
 public Location previousBestLocation = null;
-
-
+public static final int radius=150;
 Intent intent;
 int counter = 0;
 
 @Override
 public void onCreate() {
+
     super.onCreate();
     System.out.println("Create........");
     intent = new Intent(BROADCAST_ACTION);      
 }
 
 @Override
-public void onStart(Intent intent, int startId) {     
+public void onStart(Intent intent, int startId) {
+	counter++;
+	if(counter<2){
 	System.out.println("Start........");
     locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
     listener = new MyLocationListener();        
     locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 4000, 0, listener);
     locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 4000, 0, listener);
+	}
 }
 
 	@Override
@@ -97,7 +105,6 @@ public void onStart(Intent intent, int startId) {
 	public void onDestroy() {       
 		// handler.removeCallbacks(sendUpdatesToUI);  
 		System.out.println("Destroy........");
-		Log.i("aaaaaa", "stop");
 		super.onDestroy();
 		Log.v("STOP_SERVICE", "DONE");
 		locationManager.removeUpdates(listener);        
@@ -121,6 +128,19 @@ public static Thread performOnBackgroundThread(final Runnable runnable) {
 
 public class MyLocationListener implements LocationListener
 {
+	public  double function (double x){
+		return x*Math.PI/180;
+	} 
+	
+	public  double getdistance(double p1lat,double p1long,double p2lat,double p2long){
+		double R=6378137;
+		double dlat= function(p2lat-p1lat);
+		double dlong=function(p2long-p1long);
+		double a = Math.sin(dlat/2)*Math.sin(dlat/2) + Math.cos(function(p1lat)) * Math.cos(function(p2lat))* Math.sin(dlong / 2) * Math.sin(dlong / 2);
+		 double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+		 double d = R * c;
+		  return d;	
+	}
 
     public void onLocationChanged(final Location loc)
     {
@@ -128,13 +148,79 @@ public class MyLocationListener implements LocationListener
         if(isBetterLocation(loc, previousBestLocation)) {
             loc.getLatitude();
             loc.getLongitude();
-            Toast.makeText(LocationService.this, loc.getLatitude()+"----"+loc.getLongitude(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(LocationService.this, loc.getLatitude()+"----"+loc.getLongitude()+"------"+loc.getProvider(), Toast.LENGTH_SHORT).show();
             System.out.println(loc.getLatitude()+"----"+loc.getLongitude());
             intent.putExtra("Latitude", loc.getLatitude());
             intent.putExtra("Longitude", loc.getLongitude());     
             intent.putExtra("Provider", loc.getProvider());                 
-            sendBroadcast(intent);          
-
+            sendBroadcast(intent);
+            RecordOperations op = new RecordOperations(getBaseContext());
+            op.open();
+            /*
+             41.072497, 29.027798 market
+			 41.084975, 29.042331 eczane
+			 41.077354, 29.027353 akmerkez
+			 41.085064, 29.044199 atm
+			 41.085351, 29.043591 akbil
+			 41.086014, 29.044674 kitap
+			 */
+            List<RecordText> record=op.getAllPuan();
+            for (RecordText recordText : record) {
+	        	System.out.println(recordText.getReminderTicket()+ " " +" "+recordText.getReminderTextRecord());
+	        	if(recordText.getReminderTicket().equals("shop")){
+	        		System.out.println("shop");
+	        		int distance =(int) getdistance(41.072497, 29.027798,loc.getLatitude(), loc.getLongitude());
+	        		System.out.println("market distance"+distance);
+	        		if(distance<=radius){
+	        			System.out.println("notify me");
+	        		}
+	        	}
+	        	if(recordText.getReminderTicket().equals("shop1")){
+	        		System.out.println("shop1");
+	        		int distance =(int) getdistance(41.077354, 29.027353,loc.getLatitude(), loc.getLongitude());
+	        		System.out.println("avm distance"+distance);
+	        		if(distance<=radius){
+	        			System.out.println("notify me");
+	        		}
+	        	}
+	        	if(recordText.getReminderTicket().equals("atm")){
+	        		System.out.println("atm");
+	        		int distance =(int) getdistance(41.085064, 29.044199,loc.getLatitude(), loc.getLongitude());
+	        		System.out.println("atm distance"+distance);
+	        		if(distance<=radius){
+	        			System.out.println("notify me");
+	        		}
+	        	}
+	        	if(recordText.getReminderTicket().equals("book")){
+	        		System.out.println("book");
+	        		int distance =(int) getdistance(41.086014, 29.044674,loc.getLatitude(), loc.getLongitude());
+	        		System.out.println("book distance"+distance);
+	        		if(distance<=radius){
+	        			System.out.println("notify me");
+	        			
+	        		}
+	        	}
+	        	if(recordText.getReminderTicket().equals("event")){
+	        		System.out.println("event");
+	        		int distance =(int) getdistance(41.085351, 29.043591,loc.getLatitude(), loc.getLongitude());
+	        		System.out.println("akbil distance"+distance);
+	        		if(distance<=radius){
+	        			System.out.println("notify me");
+	        		}
+	        	}
+	        	if(recordText.getReminderTicket().equals("pharmacy")){
+	        		System.out.println("pharmacy");
+	        		int distance =(int) getdistance(41.084975, 29.042331,loc.getLatitude(), loc.getLongitude());
+	        		System.out.println("pharmacy distance"+distance);
+	        		if(distance<=radius){
+	        			System.out.println("notify me");
+	        		}
+	        	}
+	        	
+            }
+            
+        	
+        
         }                               
     }
 

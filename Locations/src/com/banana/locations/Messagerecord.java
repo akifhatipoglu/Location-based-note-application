@@ -74,6 +74,13 @@ public class Messagerecord  extends Activity{
 					        //startService(intent);
 					        //Toast.makeText(Messagerecord.this, "service started..", Toast.LENGTH_SHORT).show();
 					        System.out.println("service started.");
+					        
+					        
+					        Intent intent=new Intent(Messagerecord.this,Main_Activity.class);
+					        					        
+					        Messagerecord.this.finish();
+					        startActivity(intent);
+						
 				}
 			});
 	        
