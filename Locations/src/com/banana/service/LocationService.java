@@ -2,15 +2,23 @@ package com.banana.service;
 
 import java.util.List;
 
+import com.banana.locations.Main_Activity;
 import com.banana.locations.Messagerecord;
+import com.banana.locations.Notifyalert_Activity;
 import com.banana.messagedatabase.RecordOperations;
 import com.banana.messagedatabase.RecordText;
+
+import android.R;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
@@ -22,16 +30,18 @@ private static final int TWO_MINUTES = 1000 * 60 * 2;
 public LocationManager locationManager;
 public MyLocationListener listener;
 public Location previousBestLocation = null;
-public static final int radius=150;
+public static final int radius=1500;
 Intent intent;
 int counter = 0;
-
+private NotificationManager nm;
+int a=0;
 @Override
 public void onCreate() {
 
     super.onCreate();
     System.out.println("Create........");
-    intent = new Intent(BROADCAST_ACTION);      
+    intent = new Intent(BROADCAST_ACTION);   
+   // nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 }
 
 @Override
@@ -125,6 +135,22 @@ public static Thread performOnBackgroundThread(final Runnable runnable) {
     return t;
 }
 
+@SuppressWarnings("deprecation")
+private void showNotification(String message,String search) {
+	 nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+	 Intent intent = new Intent(this, Notifyalert_Activity.class);
+	 intent.putExtra("delete",search);
+    @SuppressWarnings("deprecation")
+	Notification notification = new Notification(R.drawable.ic_dialog_map, "Hatırlatma",//yukarıda gözüken
+            System.currentTimeMillis());
+    PendingIntent contentIntent = PendingIntent.getActivity(this, 0,intent, PendingIntent.FLAG_UPDATE_CURRENT);
+   
+    
+    notification.setLatestEventInfo(this, "Hatırlatma",	message , contentIntent);//,içerideki başlık tam içerik
+    nm.notify("servis aktif beyler", a, notification);
+    a++;
+}
+
 
 public class MyLocationListener implements LocationListener
 {
@@ -164,6 +190,7 @@ public class MyLocationListener implements LocationListener
 			 41.085351, 29.043591 akbil
 			 41.086014, 29.044674 kitap
 			 */
+            
             List<RecordText> record=op.getAllPuan();
             for (RecordText recordText : record) {
 	        	System.out.println(recordText.getReminderTicket()+ " " +" "+recordText.getReminderTextRecord());
@@ -173,6 +200,7 @@ public class MyLocationListener implements LocationListener
 	        		System.out.println("market distance"+distance);
 	        		if(distance<=radius){
 	        			System.out.println("notify me");
+	        			showNotification("Yakınınızda market tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
 	        		}
 	        	}
 	        	if(recordText.getReminderTicket().equals("shop1")){
@@ -181,6 +209,7 @@ public class MyLocationListener implements LocationListener
 	        		System.out.println("avm distance"+distance);
 	        		if(distance<=radius){
 	        			System.out.println("notify me");
+	        			showNotification("Yakınınızda avm tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
 	        		}
 	        	}
 	        	if(recordText.getReminderTicket().equals("atm")){
@@ -189,6 +218,7 @@ public class MyLocationListener implements LocationListener
 	        		System.out.println("atm distance"+distance);
 	        		if(distance<=radius){
 	        			System.out.println("notify me");
+	        			showNotification("Yakınınızda atm tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
 	        		}
 	        	}
 	        	if(recordText.getReminderTicket().equals("book")){
@@ -197,6 +227,7 @@ public class MyLocationListener implements LocationListener
 	        		System.out.println("book distance"+distance);
 	        		if(distance<=radius){
 	        			System.out.println("notify me");
+	        			showNotification("Yakınınızda kitapçı tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
 	        			
 	        		}
 	        	}
@@ -206,6 +237,7 @@ public class MyLocationListener implements LocationListener
 	        		System.out.println("akbil distance"+distance);
 	        		if(distance<=radius){
 	        			System.out.println("notify me");
+	        			showNotification("Yakınınızda akbil yükleme merkezi tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
 	        		}
 	        	}
 	        	if(recordText.getReminderTicket().equals("pharmacy")){
@@ -214,6 +246,7 @@ public class MyLocationListener implements LocationListener
 	        		System.out.println("pharmacy distance"+distance);
 	        		if(distance<=radius){
 	        			System.out.println("notify me");
+	        			showNotification("Yakınınızda eczane tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
 	        		}
 	        	}
 	        	
