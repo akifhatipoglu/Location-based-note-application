@@ -38,7 +38,7 @@ public class Update_Activity extends Activity{
 				op.open();
 				op.deleteNotify(text);
 				op.addPuan(ticket, text_update.getText().toString());		
-				 Toast.makeText(Update_Activity.this, "Yeni hatırlatma kaydedildi.", Toast.LENGTH_SHORT).show();
+				Toast.makeText(Update_Activity.this, "Hatırlatma güncellendi.", Toast.LENGTH_SHORT).show();
 				Intent intent=new Intent(Update_Activity.this,Main_Activity.class);	
 				startActivity(intent);
 				

@@ -173,7 +173,7 @@ public class MyLocationListener implements LocationListener
         if(isBetterLocation(loc, previousBestLocation)) {
             loc.getLatitude();
             loc.getLongitude();
-            Toast.makeText(LocationService.this, loc.getLatitude()+"----"+loc.getLongitude()+"------"+loc.getProvider(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(LocationService.this, loc.getLatitude()+"----"+loc.getLongitude(), Toast.LENGTH_SHORT).show();
             System.out.println(loc.getLatitude()+"----"+loc.getLongitude());
             intent.putExtra("Latitude", loc.getLatitude());
             intent.putExtra("Longitude", loc.getLongitude());     
@@ -199,7 +199,7 @@ public class MyLocationListener implements LocationListener
 	        		System.out.println("market distance"+distance);
 	        		if(distance<=Main_Activity.radius){
 	        			System.out.println("notify me");
-	        			showNotification("Yakınınızda market tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
+	        			showNotification("Yakınınızda Market tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
 	        		}
 	        	}
 	        	if(recordText.getReminderTicket().equals("shop1")){
@@ -208,7 +208,7 @@ public class MyLocationListener implements LocationListener
 	        		System.out.println("avm distance"+distance);
 	        		if(distance<=Main_Activity.radius){
 	        			System.out.println("notify me");
-	        			showNotification("Yakınınızda avm tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
+	        			showNotification("Yakınınızda AVM tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
 	        		}
 	        	}
 	        	if(recordText.getReminderTicket().equals("atm")){
@@ -217,7 +217,7 @@ public class MyLocationListener implements LocationListener
 	        		System.out.println("atm distance"+distance);
 	        		if(distance<=Main_Activity.radius){
 	        			System.out.println("notify me");
-	        			showNotification("Yakınınızda atm tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
+	        			showNotification("Yakınınızda ATM tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
 	        		}
 	        	}
 	        	if(recordText.getReminderTicket().equals("book")){
@@ -226,7 +226,7 @@ public class MyLocationListener implements LocationListener
 	        		System.out.println("book distance"+distance);
 	        		if(distance<=Main_Activity.radius){
 	        			System.out.println("notify me");
-	        			showNotification("Yakınınızda kitapçı tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
+	        			showNotification("Yakınınızda Kitapçı tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
 	        			
 	        		}
 	        	}
@@ -236,7 +236,7 @@ public class MyLocationListener implements LocationListener
 	        		System.out.println("akbil distance"+distance);
 	        		if(distance<=Main_Activity.radius){
 	        			System.out.println("notify me");
-	        			showNotification("Yakınınızda akbil yükleme merkezi tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
+	        			showNotification("Yakınınızda Akbil Yükleme Merkezi tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
 	        		}
 	        	}
 	        	if(recordText.getReminderTicket().equals("pharmacy")){
@@ -245,7 +245,7 @@ public class MyLocationListener implements LocationListener
 	        		System.out.println("pharmacy distance"+distance);
 	        		if(distance<=Main_Activity.radius){
 	        			System.out.println("notify me");
-	        			showNotification("Yakınınızda eczane tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
+	        			showNotification("Yakınınızda Eczane tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
 	        		}
 	        	}
 	        	

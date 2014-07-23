@@ -36,22 +36,23 @@ public class Messagerecord  extends Activity{
 	        //layout.setBackgroundColor(color)
 	        if(colorname.equals("red")){
 	        	layout.setBackgroundColor(Color.RED);
-	        	buton_record.setBackgroundColor(Color.RED);
+	        	buton_record.setBackgroundColor(Color.rgb(255,153,0));
 	        }else if(colorname.equals("blue")){
 	        	layout.setBackgroundColor(Color.BLUE);
-	        	buton_record.setBackgroundColor(Color.BLUE);
+	        	buton_record.setBackgroundColor(Color.rgb(51,153,255));
 	        }else if(colorname.equals("yellow")){
 	        	layout.setBackgroundColor(Color.YELLOW);
-	        	buton_record.setBackgroundColor(Color.YELLOW);
+	        	buton_record.setBackgroundColor(Color.rgb(102,153,51));
 	        }else if(colorname.equals("purple")){
 	        	layout.setBackgroundColor(Color.rgb(185, 22, 250));
-	        	buton_record.setBackgroundColor(Color.rgb(185, 22, 250));
+	        	buton_record.setBackgroundColor(Color.rgb(204,102,5));
 	        }else if(colorname.equals("orange")){
 	        	layout.setBackgroundColor(Color.rgb(253, 208, 23));
-	        	buton_record.setBackgroundColor(Color.rgb(253, 208, 23));
+	        	buton_record.setBackgroundColor(Color.rgb(255,153,102));
+	        	
 	        }else if(colorname.equals("green")){
 	        	layout.setBackgroundColor(Color.GREEN);
-	        	buton_record.setBackgroundColor(Color.GREEN);
+	        	buton_record.setBackgroundColor(Color.rgb(102,153,255));
 	        }
 	        
 	        
@@ -62,19 +63,18 @@ public class Messagerecord  extends Activity{
 					p= new RecordText(choose,text.getText().toString());	
 					op.open();
 					   	   op.addPuan(p.getReminderTicket(), p.getReminderTextRecord());
-					   	   Toast.makeText(Messagerecord.this, "record.", Toast.LENGTH_SHORT).show();
-					   	   List<RecordText> a= op.getAllPuan();
+					   	   Toast.makeText(Messagerecord.this, "Hatırlatma Kaydedildi.", Toast.LENGTH_SHORT).show();
+					   	   /*List<RecordText> a= op.getAllPuan();
 					        for (RecordText recordText : a) {
 					        	 Toast.makeText(Messagerecord.this, recordText.getReminderTicket()+ " " +" "+recordText.getReminderTextRecord()+"-"+recordText.getId(), Toast.LENGTH_SHORT).show();
 					        	System.out.println(recordText.getReminderTicket()+ " " +" "+recordText.getReminderTextRecord());
 							}
-					       // Intent intent = new Intent(Messagerecord.this, LocationService.class); 
+					      */ // Intent intent = new Intent(Messagerecord.this, LocationService.class); 
 					        startService(new Intent(Messagerecord.this, LocationService.class));
 					        
 					        //startService(intent);
 					        //Toast.makeText(Messagerecord.this, "service started..", Toast.LENGTH_SHORT).show();
 					        System.out.println("service started.");
-					        
 					        
 					        Intent intent=new Intent(Messagerecord.this,Main_Activity.class);
 					        					        

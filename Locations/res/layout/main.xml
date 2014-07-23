@@ -14,18 +14,20 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/textView_deleterecord"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:text="Shoping"
+                android:text="Alışveriş"
                 android:gravity="center"
+	            android:textColor="@android:color/primary_text_dark_nodisable"
+	       		android:textStyle="bold"
+	       		android:textSize="18dp"
  				 />
 
             <ImageButton
@@ -34,13 +36,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:src="@drawable/shoppingcart" />
+                android:src="@drawable/shoppingcart2" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
              >
@@ -50,8 +52,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:text="Shoping"
+                android:text="Giyim"
                 android:gravity="center"
+                android:textColor="@android:color/primary_text_dark_nodisable"
+        		android:textStyle="bold"
+        		android:textSize="18dp"
  				 />
 
             <ImageButton
@@ -60,7 +65,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:src="@drawable/bag" />
+                android:src="@drawable/bag2" />
 
         </LinearLayout>
 
@@ -82,7 +87,10 @@
                 android:layout_height="35dp"
                 android:layout_weight="1"
                 android:text="ATM"
-                android:gravity="center" />
+                android:gravity="center" 
+		        android:textColor="@android:color/primary_text_dark_nodisable"
+		        android:textStyle="bold"
+		        android:textSize="18dp"/>
 
             <ImageButton
                 android:id="@+id/imageButton3"
@@ -90,12 +98,12 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:src="@drawable/atm" />
+                android:src="@drawable/atm2" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical" >
 
@@ -104,8 +112,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:text="Book"
-                android:gravity="center" />
+                android:text="Kitap"
+                android:gravity="center"
+                android:textColor="@android:color/primary_text_dark_nodisable"
+        		android:textStyle="bold"
+        		android:textSize="18dp" />
 
             <ImageButton
                 android:id="@+id/imageButton4"
@@ -113,7 +124,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:src="@drawable/book" />
+                android:src="@drawable/book2" />
         </LinearLayout>
 
     </LinearLayout>
@@ -127,7 +138,7 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical" >
 
@@ -136,8 +147,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:text="Event"
-                android:gravity="center" />
+                android:text="Şehir Hizmetleri"
+                android:gravity="center"
+                android:textColor="@android:color/primary_text_dark_nodisable"
+        android:textStyle="bold"
+        android:textSize="18dp" />
 
             <ImageButton
                 android:id="@+id/imageButton5"
@@ -145,12 +159,12 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:src="@drawable/event" />
+                android:src="@drawable/bus" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical" >
 
@@ -159,8 +173,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:text="Pharmacy"
-                android:gravity="center" />
+                android:text="Eczane"
+                android:gravity="center"
+                android:textColor="@android:color/primary_text_dark_nodisable"
+        		android:textStyle="bold" 
+        		android:textSize="18dp"/>
 
             <ImageButton
                 android:id="@+id/imageButton6"
@@ -168,7 +185,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:src="@drawable/pharmacy" />
+                android:src="@drawable/pharmacys2" />
         </LinearLayout>
 
     </LinearLayout>

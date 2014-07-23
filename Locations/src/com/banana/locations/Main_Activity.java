@@ -31,7 +31,7 @@ public class Main_Activity extends Activity {
         int yenileme =Integer.parseInt(sharedPrefs.getString("yenileme","20"));
         TWO_MINUTES=yenileme;
        
-       Toast.makeText(Main_Activity.this, yaricap+" yaricaplı , yenilemesi "+yenileme, Toast.LENGTH_SHORT).show();
+       //Toast.makeText(Main_Activity.this, yaricap+" yaricaplı , yenilemesi "+yenileme, Toast.LENGTH_SHORT).show();
        //  sharedPrefs.getString("welcome_message", "NULL");
       //  
         
@@ -118,19 +118,19 @@ public class Main_Activity extends Activity {
         switch (item.getItemId())
         {
         case R.id.menu_Hatirlatmalari_listele:
-            Toast.makeText(Main_Activity.this, "Hatırlatmaları listele is Selected", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(Main_Activity.this, "Hatırlatmaları listele is Selected", Toast.LENGTH_SHORT).show();
             Intent intent=new Intent(Main_Activity.this,List_Activity.class);
 			startActivity(intent);
             return true;
  
         case R.id.menu_settings:
-            Toast.makeText(Main_Activity.this, "Settings is Selected", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(Main_Activity.this, "Settings is Selected", Toast.LENGTH_SHORT).show();
             Intent intent2=new Intent(Main_Activity.this,Settings.class);
 			startActivity(intent2);
             return true;
  
         case R.id.menu_exit:
-            Toast.makeText(Main_Activity.this, "Exit is Selected", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(Main_Activity.this, "Exit is Selected", Toast.LENGTH_SHORT).show();
             Main_Activity.this.finish();
             return true;
         default:

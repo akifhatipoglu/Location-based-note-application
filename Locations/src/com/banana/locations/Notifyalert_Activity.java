@@ -45,12 +45,12 @@ public class Notifyalert_Activity extends Activity {
 								public void onClick(DialogInterface dialog,
 										int id) {
 									op.deleteNotify(delete_record);
-								   	   Toast.makeText(Notifyalert_Activity.this, "record.", Toast.LENGTH_SHORT).show();
-								   	   List<RecordText> a= op.getAllPuan();
+								   	   //Toast.makeText(Notifyalert_Activity.this, "record.", Toast.LENGTH_SHORT).show();
+								   	  /* List<RecordText> a= op.getAllPuan();
 								        for (RecordText recordText : a) {
 								        	 Toast.makeText(Notifyalert_Activity.this, recordText.getReminderTicket()+ " " +" "+recordText.getReminderTextRecord(), Toast.LENGTH_SHORT).show();
 								        	System.out.println(recordText.getReminderTicket()+ " " +" "+recordText.getReminderTextRecord());
-										}
+										}*/
 								        Intent intent=new Intent(Notifyalert_Activity.this,Main_Activity.class);				
 										startActivity(intent);   
 								}

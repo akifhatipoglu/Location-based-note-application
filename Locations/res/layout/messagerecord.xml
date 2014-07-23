@@ -9,10 +9,13 @@
         android:id="@+id/editText1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="25dp"
         android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:ems="10"
         android:gravity="top"
-          android:background="@android:color/transparent"
-        android:ems="10" >
+        android:textColor="@android:color/black"
+        android:textSize="28dp" >
 
         <requestFocus />
     </EditText>
@@ -22,6 +25,8 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Kaydet" />
+        android:text="Kaydet"
+        android:textColor="@android:color/darker_gray"
+        android:textStyle="bold" />
 
 </LinearLayout>
