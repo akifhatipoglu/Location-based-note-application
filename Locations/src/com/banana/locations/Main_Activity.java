@@ -4,11 +4,16 @@ import com.mkyong.android.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class Main_Activity extends Activity {
     /** Called when the activity is first created. */
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,4 +81,50 @@ public class Main_Activity extends Activity {
 		});
         
     }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+     
+    /**
+     * Event Handling for Individual menu item selected
+     * Identify single menu item by it's id
+     * */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+         
+        switch (item.getItemId())
+        {
+        case R.id.menu_Hatirlatmalari_listele:
+            Toast.makeText(Main_Activity.this, "Hatırlatmaları listele is Selected", Toast.LENGTH_SHORT).show();
+            Intent intent=new Intent(Main_Activity.this,List_Activity.class);
+			startActivity(intent);
+            return true;
+ 
+        case R.id.menu_settings:
+            Toast.makeText(Main_Activity.this, "Settings is Selected", Toast.LENGTH_SHORT).show();
+            return true;
+ 
+        case R.id.menu_exit:
+            Toast.makeText(Main_Activity.this, "Exit is Selected", Toast.LENGTH_SHORT).show();
+            Main_Activity.this.finish();
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
+    }    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

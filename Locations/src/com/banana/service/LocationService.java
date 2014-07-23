@@ -165,7 +165,8 @@ public class MyLocationListener implements LocationListener
 		  return d;	
 	}
 
-    public void onLocationChanged(final Location loc)
+    @Override
+	public void onLocationChanged(final Location loc)
     {
         System.out.println("Location changed........");
         if(isBetterLocation(loc, previousBestLocation)) {
@@ -254,19 +255,22 @@ public class MyLocationListener implements LocationListener
         }                               
     }
 
-    public void onProviderDisabled(String provider)
+    @Override
+	public void onProviderDisabled(String provider)
     {
         Toast.makeText( getApplicationContext(), "* Gps Disabled *", Toast.LENGTH_SHORT ).show();
     }
 
 
-    public void onProviderEnabled(String provider)
+    @Override
+	public void onProviderEnabled(String provider)
     {
         Toast.makeText( getApplicationContext(), "* Gps Enabled *", Toast.LENGTH_SHORT).show();
     }
 
 
-    public void onStatusChanged(String provider, int status, Bundle extras)
+    @Override
+	public void onStatusChanged(String provider, int status, Bundle extras)
     {
 
     }

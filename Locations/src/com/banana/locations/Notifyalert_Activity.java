@@ -41,6 +41,7 @@ public class Notifyalert_Activity extends Activity {
 					.setCancelable(false)
 					.setPositiveButton("Evet",
 							new DialogInterface.OnClickListener() {
+								@Override
 								public void onClick(DialogInterface dialog,
 										int id) {
 									op.deleteNotify(delete_record);
@@ -56,6 +57,7 @@ public class Notifyalert_Activity extends Activity {
 							})
 					.setNegativeButton("Hayır",
 							new DialogInterface.OnClickListener() {
+								@Override
 								public void onClick(DialogInterface dialog,
 										int id) {
 									dialog.cancel();
