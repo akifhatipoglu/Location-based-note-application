@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <PreferenceCategory 
+        android:title="Konuma göre görüş mesafesi"
+        android:key="first_category">
+   
+        <ListPreference 
+            android:key="yaricap"
+            android:title="Görüş Mesafesi"
+            android:summary="Haberdar olmak istediğiniz yere maksimum uzaklığınız"
+            android:defaultValue="1500" 
+            android:entries="@array/yaricap"
+            android:entryValues="@array/yaricapvalues"
+        />    
+            
+    </PreferenceCategory>
+    
+    <PreferenceCategory 
+        android:title="Konum yenileme sıklıgı"
+        android:key="first_category1">
+   
+        <ListPreference 
+            android:key="yenileme"
+            android:title="Konum yenileme sıklıgı"
+            android:summary="Konumunuzun yenilenme sıklığı"
+            android:defaultValue="20" 
+            android:entries="@array/taramasikligi"
+            android:entryValues="@array/taramasikligivalues"
+        />    
+        
+            
+    </PreferenceCategory>
+
+    
+    
+</PreferenceScreen>

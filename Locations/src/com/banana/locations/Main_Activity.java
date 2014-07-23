@@ -3,7 +3,9 @@ package com.banana.locations;
 import com.mkyong.android.R;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,6 +20,17 @@ public class Main_Activity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
+        
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+      //sharedPrefs.getBoolean("perform_updates", false);
+        int yaricap=  Integer.parseInt(sharedPrefs.getString("yaricap","1500").toString());
+       int yenileme =Integer.parseInt(sharedPrefs.getString("yenileme","20"));  
+       
+       Toast.makeText(Main_Activity.this, yaricap+" yaricaplı , yenilemesi "+yenileme, Toast.LENGTH_SHORT).show();
+       //  sharedPrefs.getString("welcome_message", "NULL");
+      //  
+        
         
         ImageButton btn_shop=(ImageButton) findViewById(R.id.imageButton1);
         btn_shop.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +121,8 @@ public class Main_Activity extends Activity {
  
         case R.id.menu_settings:
             Toast.makeText(Main_Activity.this, "Settings is Selected", Toast.LENGTH_SHORT).show();
+            Intent intent2=new Intent(Main_Activity.this,Settings.class);
+			startActivity(intent2);
             return true;
  
         case R.id.menu_exit:

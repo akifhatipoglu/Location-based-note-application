@@ -2,18 +2,51 @@
 <resources>
 
     <string name="app_name">Locations</string>
-	<string-array name="planets_array">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
+	 
+	 <string-array name="yaricap">
+        <item name="50">50m yarıcaplı alanı tara</item>
+        <item name="100">100m yarıcaplı alanı tara</item>
+        <item name="250">250m yarıcaplı alanı tara</item>
+        <item name="500">500m yarıcaplı alanı tara</item>
+        <item name="1000">1000m yarıcaplı alanı tara</item>
+        <item name="1500">1500m yarıcaplı alanı tara</item>
+        <item name="2000">2000m yarıcaplı alanı tara</item>
+        <item name="4000">4000m yarıcaplı alanı tara</item>
     </string-array>
-    <string name="drawer_open">Open navigation drawer</string>
-    <string name="drawer_close">Close navigation drawer</string>
-    <string name="action_websearch">Web search</string>
-    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+     <string-array name="yaricapvalues">
+        <item name="50">50</item>
+        <item name="100">100</item>
+        <item name="250">250</item>
+        <item name="500">500</item>
+        <item name="1000">1000</item>
+        <item name="1500">1500</item>
+        <item name="2000">2000</item>
+        <item name="4000">4000</item>
+    </string-array>
+	 <string-array name="taramasikligi">
+        <item name="20">20 saniyelik tarama sıklıgı</item>
+        <item name="40">40 saniyelik tarama sıklıgı</item>
+        <item name="60">1 dakikalık tarama sıklıgı</item>
+        <item name="120">2 dakikalık tarama sıklıgı</item>
+        <item name="240">4 dakikalık tarama sıklıgı</item>
+        <item name="480">8 dakikalık tarama sıklıgı</item>
+        <item name="960">16 dakikalık tarama sıklıgı</item>
+        <item name="1920">32 dakikalık tarama sıklıgı</item>
+    </string-array>
+    <string-array name="taramasikligivalues">
+        <item name="20">20</item>
+        <item name="40">40</item>
+        <item name="60">60</item>
+        <item name="120">120</item>
+        <item name="240">240</item>
+        <item name="480">480</item>
+        <item name="960">960</item>
+        <item name="1920">1920</item>
+    </string-array>
+	 
+	 
+	  
+    
+    
+    
 </resources>
