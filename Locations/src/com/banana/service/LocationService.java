@@ -2,6 +2,7 @@ package com.banana.service;
 
 import java.util.List;
 
+import com.banana.locations.Main_Activity;
 import com.banana.locations.Notifyalert_Activity;
 import com.banana.messagedatabase.RecordOperations;
 import com.banana.messagedatabase.RecordText;
@@ -23,11 +24,11 @@ import android.widget.Toast;
 
 public class LocationService extends Service {
 public static final String BROADCAST_ACTION = "Hello World";
-private static final int TWO_MINUTES = 1000 * 60 * 2;
+//private static final int TWO_MINUTES = 1000 * 60 * 2;
 public LocationManager locationManager;
 public MyLocationListener listener;
 public Location previousBestLocation = null;
-public static final int radius=1500;
+//public static final int radius=1500;
 Intent intent;
 int counter = 0;
 private NotificationManager nm;
@@ -48,8 +49,8 @@ public void onStart(Intent intent, int startId) {
 	System.out.println("Start........");
     locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
     listener = new MyLocationListener();        
-    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 4000, 0, listener);
-    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 4000, 0, listener);
+    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, Main_Activity.TWO_MINUTES, 0, listener);
+    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, Main_Activity.TWO_MINUTES, 0, listener);
 	}
 }
 
@@ -66,8 +67,8 @@ public void onStart(Intent intent, int startId) {
 
     // Check whether the new location fix is newer or older
     long timeDelta = location.getTime() - currentBestLocation.getTime();
-    boolean isSignificantlyNewer = timeDelta > TWO_MINUTES;
-    boolean isSignificantlyOlder = timeDelta < -TWO_MINUTES;
+    boolean isSignificantlyNewer = timeDelta > Main_Activity.TWO_MINUTES;
+    boolean isSignificantlyOlder = timeDelta < -Main_Activity.TWO_MINUTES;
     boolean isNewer = timeDelta > 0;
 
     // If it's been more than two minutes since the current location, use the new location
@@ -196,7 +197,7 @@ public class MyLocationListener implements LocationListener
 	        		System.out.println("shop");
 	        		int distance =(int) getdistance(41.072497, 29.027798,loc.getLatitude(), loc.getLongitude());
 	        		System.out.println("market distance"+distance);
-	        		if(distance<=radius){
+	        		if(distance<=Main_Activity.radius){
 	        			System.out.println("notify me");
 	        			showNotification("Yakınınızda market tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
 	        		}
@@ -205,7 +206,7 @@ public class MyLocationListener implements LocationListener
 	        		System.out.println("shop1");
 	        		int distance =(int) getdistance(41.077354, 29.027353,loc.getLatitude(), loc.getLongitude());
 	        		System.out.println("avm distance"+distance);
-	        		if(distance<=radius){
+	        		if(distance<=Main_Activity.radius){
 	        			System.out.println("notify me");
 	        			showNotification("Yakınınızda avm tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
 	        		}
@@ -214,7 +215,7 @@ public class MyLocationListener implements LocationListener
 	        		System.out.println("atm");
 	        		int distance =(int) getdistance(41.085064, 29.044199,loc.getLatitude(), loc.getLongitude());
 	        		System.out.println("atm distance"+distance);
-	        		if(distance<=radius){
+	        		if(distance<=Main_Activity.radius){
 	        			System.out.println("notify me");
 	        			showNotification("Yakınınızda atm tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
 	        		}
@@ -223,7 +224,7 @@ public class MyLocationListener implements LocationListener
 	        		System.out.println("book");
 	        		int distance =(int) getdistance(41.086014, 29.044674,loc.getLatitude(), loc.getLongitude());
 	        		System.out.println("book distance"+distance);
-	        		if(distance<=radius){
+	        		if(distance<=Main_Activity.radius){
 	        			System.out.println("notify me");
 	        			showNotification("Yakınınızda kitapçı tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
 	        			
@@ -233,7 +234,7 @@ public class MyLocationListener implements LocationListener
 	        		System.out.println("event");
 	        		int distance =(int) getdistance(41.085351, 29.043591,loc.getLatitude(), loc.getLongitude());
 	        		System.out.println("akbil distance"+distance);
-	        		if(distance<=radius){
+	        		if(distance<=Main_Activity.radius){
 	        			System.out.println("notify me");
 	        			showNotification("Yakınınızda akbil yükleme merkezi tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
 	        		}
@@ -242,7 +243,7 @@ public class MyLocationListener implements LocationListener
 	        		System.out.println("pharmacy");
 	        		int distance =(int) getdistance(41.084975, 29.042331,loc.getLatitude(), loc.getLongitude());
 	        		System.out.println("pharmacy distance"+distance);
-	        		if(distance<=radius){
+	        		if(distance<=Main_Activity.radius){
 	        			System.out.println("notify me");
 	        			showNotification("Yakınınızda eczane tespit edildi unutmayın.("+recordText.getReminderTextRecord()+")",recordText.getReminderTextRecord());
 	        		}

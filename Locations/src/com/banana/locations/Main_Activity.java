@@ -15,7 +15,8 @@ import android.widget.Toast;
 
 public class Main_Activity extends Activity {
     /** Called when the activity is first created. */
-	
+	public static  int radius=1500;
+	public static  int TWO_MINUTES=1000 * 60 * 2;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,8 +25,11 @@ public class Main_Activity extends Activity {
         
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
       //sharedPrefs.getBoolean("perform_updates", false);
+        
         int yaricap=  Integer.parseInt(sharedPrefs.getString("yaricap","1500").toString());
-       int yenileme =Integer.parseInt(sharedPrefs.getString("yenileme","20"));  
+        radius=yaricap;
+        int yenileme =Integer.parseInt(sharedPrefs.getString("yenileme","20"));
+        TWO_MINUTES=yenileme;
        
        Toast.makeText(Main_Activity.this, yaricap+" yaricaplı , yenilemesi "+yenileme, Toast.LENGTH_SHORT).show();
        //  sharedPrefs.getString("welcome_message", "NULL");
