@@ -24,17 +24,19 @@ public final class R {
         public static final int farstlights=0x7f020004;
         public static final int gray=0x7f020005;
         public static final int ic_launcher=0x7f020006;
-        public static final int icon_exit=0x7f020007;
-        public static final int icon_list=0x7f020008;
-        public static final int icon_settings=0x7f020009;
-        public static final int monologue=0x7f02000a;
-        public static final int onixjam=0x7f02000b;
-        public static final int pharmacy=0x7f02000c;
-        public static final int shoppingcart=0x7f02000d;
-        public static final int wallpaper=0x7f02000e;
+        public static final int icon=0x7f020007;
+        public static final int icon_exit=0x7f020008;
+        public static final int icon_list=0x7f020009;
+        public static final int icon_settings=0x7f02000a;
+        public static final int monologue=0x7f02000b;
+        public static final int onixjam=0x7f02000c;
+        public static final int pharmacy=0x7f02000d;
+        public static final int shoppingcart=0x7f02000e;
+        public static final int wallpaper=0x7f02000f;
     }
     public static final class id {
         public static final int button_record=0x7f08000e;
+        public static final int button_update=0x7f080010;
         public static final int editText1=0x7f08000d;
         public static final int imageButton1=0x7f080002;
         public static final int imageButton2=0x7f080003;
@@ -43,21 +45,23 @@ public final class R {
         public static final int imageButton5=0x7f080009;
         public static final int imageButton6=0x7f08000b;
         public static final int listView_list=0x7f080000;
-        public static final int menu_Hatirlatmalari_listele=0x7f08000f;
-        public static final int menu_exit=0x7f080011;
-        public static final int menu_settings=0x7f080010;
+        public static final int menu_Hatirlatmalari_listele=0x7f080011;
+        public static final int menu_exit=0x7f080013;
+        public static final int menu_settings=0x7f080012;
         public static final int notebackground=0x7f08000c;
         public static final int textView2=0x7f080004;
         public static final int textView3=0x7f080006;
         public static final int textView4=0x7f080008;
         public static final int textView5=0x7f08000a;
         public static final int textView_deleterecord=0x7f080001;
+        public static final int textView_update=0x7f08000f;
     }
     public static final class layout {
         public static final int list=0x7f030000;
         public static final int main=0x7f030001;
         public static final int messagerecord=0x7f030002;
         public static final int notifyalert=0x7f030003;
+        public static final int update=0x7f030004;
     }
     public static final class menu {
         public static final int menu=0x7f070000;

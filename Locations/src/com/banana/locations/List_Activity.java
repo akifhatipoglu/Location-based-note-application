@@ -91,6 +91,10 @@ public class List_Activity extends Activity{
 		if(item.getItemId()==ID_Duzenle)
 		{
 			Toast.makeText(List_Activity.this, "duzenle is Selected"+listview.getItemAtPosition(info.position), Toast.LENGTH_SHORT).show();
+			Intent intent=new Intent(List_Activity.this,Update_Activity.class);	
+			intent.putExtra("updatetext",listview.getItemAtPosition(info.position).toString().substring(listview.getItemAtPosition(info.position).toString().indexOf(" Not: ")+6,listview.getItemAtPosition(info.position).toString().length()).trim());
+			intent.putExtra("updateticket",listview.getItemAtPosition(info.position).toString().substring(listview.getItemAtPosition(info.position).toString().indexOf("Etiket: ")+8,listview.getItemAtPosition(info.position).toString().indexOf(" Not: ")).trim());
+			startActivity(intent);
 			return true;
 		}	
 		return false;
