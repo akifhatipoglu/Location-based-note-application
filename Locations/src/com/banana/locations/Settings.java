@@ -1,6 +1,9 @@
 package com.banana.locations;
 
+import com.banana.service.LocationService;
 import com.mkyong.android.R;
+
+import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -27,7 +30,10 @@ public class Settings extends PreferenceActivity{
 	    public boolean onOptionsItemSelected(MenuItem item) {
 	        switch (item.getItemId()) {
 	            case 0:
+	            	
+	            	//stopService(Messagerecord.intent2);
 	                startActivity(new Intent(this, Main_Activity.class));
+	               // startService(Messagerecord.intent2);
 	                return true;
 	        }
 	        return false;

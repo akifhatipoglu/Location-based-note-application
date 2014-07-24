@@ -21,6 +21,7 @@ public class Messagerecord  extends Activity{
 	private RecordText p;
 	private  String choose;
 	private EditText text;
+	public static Intent intent2 ;
 	 @Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
@@ -69,8 +70,8 @@ public class Messagerecord  extends Activity{
 					        	 Toast.makeText(Messagerecord.this, recordText.getReminderTicket()+ " " +" "+recordText.getReminderTextRecord()+"-"+recordText.getId(), Toast.LENGTH_SHORT).show();
 					        	System.out.println(recordText.getReminderTicket()+ " " +" "+recordText.getReminderTextRecord());
 							}
-					      */ // Intent intent = new Intent(Messagerecord.this, LocationService.class); 
-					        startService(new Intent(Messagerecord.this, LocationService.class));
+					      */ intent2 = new Intent(Messagerecord.this, LocationService.class); 
+					        startService(intent2);
 					        
 					        //startService(intent);
 					        //Toast.makeText(Messagerecord.this, "service started..", Toast.LENGTH_SHORT).show();
